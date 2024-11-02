@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, render_template, session, flash
+ from flask import Flask, request, redirect, url_for, render_template, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 
@@ -11,7 +11,7 @@ def get_db_connection():
         host='clonedb.c7kcawq6wjvr.eu-north-1.rds.amazonaws.com',
         user='admin',
         password='Onlineawsnm',
-        database='clone_db'
+        database='clone_db'  # Ensure this matches the database you created
     )
 
 # Home route
@@ -25,7 +25,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        hashed_password = generate_password_hash(password)  # No method specified
+        hashed_password = generate_password_hash(password)  # No need for method='sha256'
 
         conn = get_db_connection()
         cursor = conn.cursor()
