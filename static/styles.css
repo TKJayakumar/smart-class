@@ -1,0 +1,170 @@
+/* Reset and General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background: #f0f2f5;
+    line-height: 1.6;
+}
+
+/* Hero Section (Home Page) */
+.hero-section {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    min-height: 100vh;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons a {
+    display: inline-block;
+    margin: 15px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.hero-buttons .btn-register {
+    background: #4caf50;
+}
+
+.hero-buttons .btn-login {
+    background: #2196f3;
+}
+
+.hero-buttons a:hover {
+    opacity: 0.85;
+}
+
+/* Card Styling (Form Cards) */
+.card {
+    width: 400px;
+    margin: 80px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background: #fff;
+}
+
+.card h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form Styling */
+form .form-group {
+    margin-bottom: 20px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form .btn {
+    width: 100%;
+    padding: 12px;
+    background: #4caf50;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form .btn:hover {
+    background: #45a049;
+}
+
+/* Dashboard Page Styling */
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.dashboard-container h2 {
+    color: #333;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.dashboard-card {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h4 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.dashboard-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-card li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.dashboard-card a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+.logout-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 25px;
+    color: #fff;
+    background: #dc3545;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
