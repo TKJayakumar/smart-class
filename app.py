@@ -8,7 +8,7 @@ app.secret_key = 'temporary_key'
 # Database connection function
 def get_db_connection():
     return mysql.connector.connect(
-        host='clonedb.c7kcawq6wjvr.eu-north-1.rds.amazonaws.comt',
+        host='clonedb.c7kcawq6wjvr.eu-north-1.rds.amazonaws.com',
         user='admin',
         password='Onlineawsnm',
         database='clone_db'
@@ -25,7 +25,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        hashed_password = generate_password_hash(password, method='sha256')
+        hashed_password = generate_password_hash(password)  # No method specified
 
         conn = get_db_connection()
         cursor = conn.cursor()
