@@ -25,19 +25,23 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        hashed_password = generate_password_hash(password)  # Removed method='sha256'
-
+        
+        # Generate hashed password with pbkdf2:sha256
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        
+        # Connect to the database and insert the new user
         conn = get_db_connection()
         cursor = conn.cursor()
-
-        # Insert new user into the database
-        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, hashed_password))
-        conn.commit()
-        cursor.close()
-        conn.close()
-
-        flash("Registration successful! Please log in.", "success")
-        return redirect(url_for('login'))
+        try:
+            cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, hashed_password))
+            conn.commit()
+            flash("Registration successful! Please log in.", "success")
+            return redirect(url_for('login'))
+        except mysql.connector.Error as err:
+            flash(f"Error: {err}", "error")
+        finally:
+            cursor.close()
+            conn.close()
     return render_template('register.html')
 
 # Login route
@@ -46,7 +50,8 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
+        
+        # Connect to the database to retrieve the user password
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute("SELECT password FROM users WHERE username = %s", (username,))
@@ -54,12 +59,13 @@ def login():
         cursor.close()
         conn.close()
 
+        # Validate password and log in the user
         if user and check_password_hash(user[0], password):
             session['username'] = username
+            flash("Login successful!", "success")
             return redirect(url_for('dashboard'))
         else:
             flash("Invalid username or password.", "error")
-            return redirect(url_for('login'))
     return render_template('login.html')
 
 # Dashboard route
